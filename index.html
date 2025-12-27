@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<title>Mobile Gift UI</title>
+
+<style>
+:root {
+    --pink: #ff4f8b;
+    --bg1: #2b0a3d;
+    --bg2: #16001f;
+}
+
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    background: linear-gradient(180deg, var(--bg1), var(--bg2));
+    min-height: 100vh;
+    color: #fff;
+}
+
+/* container */
+.container {
+    padding: 14px;
+    max-width: 480px;
+    margin: auto;
+}
+
+/* list row */
+.gift-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+/* avatar */
+.avatar {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.avatar img {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.online {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    width: 10px;
+    height: 10px;
+    background: #22c55e;
+    border-radius: 50%;
+    border: 2px solid #1b0226;
+}
+
+/* gift button */
+.gift-btn {
+    flex: 1;
+    height: 48px;
+    background: var(--pink);
+    border-radius: 30px;
+    position: relative;
+    cursor: pointer;
+    transition: transform .15s ease, opacity .15s ease;
+}
+
+.gift-btn:active {
+    transform: scale(0.97);
+    opacity: 0.85;
+}
+
+.gift-btn::before,
+.gift-btn::after {
+    content: "";
+    position: absolute;
+    background: rgba(255,255,255,0.85);
+}
+
+.gift-btn::before {
+    width: 8px;
+    height: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.gift-btn::after {
+    height: 8px;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.bow {
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    background: #fff;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* modal overlay */
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    display: none;
+    align-items: flex-end;
+    z-index: 999;
+}
+
+/* bottom sheet */
+.modal-box {
+    width: 100%;
+    background: #1e002b;
+    border-radius: 20px 20px 0 0;
+    padding: 20px;
+    animation: slideUp .25s ease;
+    padding-bottom: env(safe-area-inset-bottom);
+}
+
+.modal-box h3 {
+    margin: 0 0 10px;
+    color: var(--pink);
+    font-size: 18px;
+}
+
+.modal-box p {
+    font-size: 15px;
+    line-height: 1.4;
+}
+
+.close {
+    margin-top: 16px;
+    padding: 12px;
+    text-align: center;
+    border-radius: 14px;
+    background: var(--pink);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="gift-row">
+        <div class="avatar">
+            <img src="https://imgs.search.brave.com/CQwtZ5K2gC4p1MfW-jfewi9v1tMrgTcV0ecpWUcZ8do/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJzLmNvbS9p/bWFnZXMvaGQvY3V0/ZS1hbmltZS1wcm9m/aWxlLXBpY3R1cmVz/LXZtcmNoOTliZ281/bWptNHYuanBn">
+            <span class="online"></span>
+        </div>
+        <div class="gift-btn" onclick="openModal('ကို့ကိုတစ်နာရီရမယ်😍')">
+            <div class="bow"></div>
+        </div>
+    </div>
+
+    <div class="gift-row">
+        <div class="avatar">
+            <img src="https://imgs.search.brave.com/CQwtZ5K2gC4p1MfW-jfewi9v1tMrgTcV0ecpWUcZ8do/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJzLmNvbS9p/bWFnZXMvaGQvY3V0/ZS1hbmltZS1wcm9m/aWxlLXBpY3R1cmVz/LXZtcmNoOTliZ281/bWptNHYuanBn">
+            <span class="online"></span>
+        </div>
+        <div class="gift-btn" onclick="openModal('အရုပ်တစ်ခုဝယ်ပေးမယ်')">
+            <div class="bow"></div>
+        </div>
+    </div>
+<div class="gift-row">
+        <div class="avatar">
+            <img src="https://imgs.search.brave.com/CQwtZ5K2gC4p1MfW-jfewi9v1tMrgTcV0ecpWUcZ8do/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJzLmNvbS9p/bWFnZXMvaGQvY3V0/ZS1hbmltZS1wcm9m/aWxlLXBpY3R1cmVz/LXZtcmNoOTliZ281/bWptNHYuanBn">
+            <span class="online"></span>
+        </div>
+        <div class="gift-btn" onclick="openModal('အာဘွားးးးး😘')">
+            <div class="bow"></div>
+        </div>
+    </div>
+    <div class="gift-row">
+        <div class="avatar">
+            <img src="https://imgs.search.brave.com/CQwtZ5K2gC4p1MfW-jfewi9v1tMrgTcV0ecpWUcZ8do/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJzLmNvbS9p/bWFnZXMvaGQvY3V0/ZS1hbmltZS1wcm9m/aWxlLXBpY3R1cmVz/LXZtcmNoOTliZ281/bWptNHYuanBn">
+            <span class="online"></span>
+        </div>
+        <div class="gift-btn" onclick="openModal('၂၀၀၀၀ယူ')">
+            <div class="bow"></div>
+        </div>
+    </div>
+    <div class="gift-row">
+        <div class="avatar">
+            <img src="https://imgs.search.brave.com/CQwtZ5K2gC4p1MfW-jfewi9v1tMrgTcV0ecpWUcZ8do/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJzLmNvbS9p/bWFnZXMvaGQvY3V0/ZS1hbmltZS1wcm9m/aWxlLXBpY3R1cmVz/LXZtcmNoOTliZ281/bWptNHYuanBn">
+            <span class="online"></span>
+        </div>
+        <div class="gift-btn" onclick="openModal('JoJoစား')">
+            <div class="bow"></div>
+        </div>
+    </div>
+
+</div>
+
+<!-- modal -->
+<div class="modal" id="modal" onclick="closeModal()">
+    <div class="modal-box" onclick="event.stopPropagation()">
+        <h3>🎁 Gift Info</h3>
+        <p id="modalText"></p>
+        <div class="close" onclick="closeModal()">OK</div>
+    </div>
+</div>
+
+<script>
+function openModal(text) {
+    document.getElementById("modalText").innerText = text;
+    document.getElementById("modal").style.display = "flex";
+}
+
+function closeModal() {
+    document.getElementById("modal").style.display = "none";
+}
+</script>
+
+</body>
+</html>
